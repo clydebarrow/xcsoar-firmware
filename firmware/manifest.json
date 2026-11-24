@@ -1,0 +1,38 @@
+{
+  "name": "XCSoar for ESP32-P4",
+  "updated": "2026-11-24T05:02:37+00:00",
+  "builds": [
+    {
+      "variant": "tab5-st7121",
+      "title": "M5Stack Tab5 with the ST7121 panel",
+      "description": "A Tab5 whose display is the ST7121 panel",
+      "device_name": "xcsoar-tab5-st7121",
+      "chip": "ESP32-P4",
+      "version": "2026.11.24-0502",
+      "esphome": "91b4a853c9",
+      "xcsoar": "75d924db7c",
+      "file": "tab5-st7121.bin",
+      "size": 6207344,
+      "sha256": "5a077adaa518916768e78d93962d990b860f7c9f6c4728fae318472bd22e1196",
+      "elf_sha256": "e408102b72afc2e71b3293bab6b33d4c3ba97526dee0d788f04e1bd990f6f53e",
+      "esphome_version": "2026.12.0-dev",
+      "idf_version": "v5.5.6"
+    },
+    {
+      "variant": "tab5-st7123",
+      "title": "M5Stack Tab5 with the ST7123 panel",
+      "description": "A Tab5 whose display is the ST7123 panel",
+      "device_name": "xcsoar-tab5-ble",
+      "chip": "ESP32-P4",
+      "version": "2026.11.24-0502",
+      "esphome": "91b4a853c9",
+      "xcsoar": "75d924db7c",
+      "file": "tab5-st7123.bin",
+      "size": 6207264,
+      "sha256": "b882d5fe2ee810ac2e1ea9b353ba29326a3fd2a2d6f7d0e7ae3d7476f6618c94",
+      "elf_sha256": "c8e62aca5d8dfccc3a3aa54c3a8ff71d0e232fcca2a3ff156d2c76b1a31011de",
+      "esphome_version": "2026.12.0-dev",
+      "idf_version": "v5.5.6"
+    }
+  ]
+}

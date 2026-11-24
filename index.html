@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XCSoar Firmware Update</title>
+  <meta name="description" content="Update the XCSoar firmware of an M5Stack Tab5 or LilyGO T-Display-P4 from the browser.">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="flasher.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>XCSoar firmware update</h1>
+      <p class="lead">Update the XCSoar firmware of your device from this page, with a USB cable. Your settings,
+        flights and saved Wi-Fi networks are kept.</p>
+    </header>
+
+    <section id="unsupported" class="notice error" hidden>
+      <p>This browser cannot talk to USB devices. Open this page in <strong>Chrome</strong> or
+        <strong>Edge</strong> on a desktop or laptop computer.</p>
+    </section>
+
+    <section id="steps">
+      <h2>Before you start</h2>
+      <ol>
+        <li>Connect the device to this computer with a USB-C cable that carries data, not only power.
+          On a Tab5, use the USB-C port on the side, next to the power button.</li>
+        <li>In XCSoar, open the menu and press <strong>Quit</strong>. The screen will say
+          <strong>Ready to update</strong> (on a LilyGO board, <strong>XCSoar has stopped</strong>). This makes sure
+          nothing is written to the SD card during the update.
+          <details>
+            <summary>The screen does not say "Ready to update"</summary>
+            <p>Firmware older than November 2026 switches off or sleeps after Quit instead. Press the side button to
+              start the device, wait for the "Who is flying?" screen, and update from there without choosing a
+              pilot.</p>
+          </details>
+        </li>
+        <li>Press <strong>Connect</strong> below, choose the device in the list the browser shows
+          (often called "USB JTAG/serial debug unit"), and press <strong>Connect</strong> there.</li>
+      </ol>
+      <button id="connect" class="primary" type="button" disabled>Connect</button>
+    </section>
+
+    <section id="device" hidden>
+      <h2>Your device</h2>
+      <dl>
+        <dt>Chip</dt><dd id="chip"></dd>
+        <dt>Installed</dt><dd id="installed"></dd>
+      </dl>
+      <label for="variant">Firmware for</label>
+      <select id="variant"></select>
+      <p id="variant-description" class="hint"></p>
+      <p id="variant-warning" class="notice warning" hidden>This is not the firmware the device has now. Install it
+        only if you are sure which model you have: the wrong firmware can leave the screen blank until the right one
+        is installed.</p>
+      <p id="latest" class="hint"></p>
+      <button id="install" class="primary" type="button">Install</button>
+      <button id="disconnect" type="button">Cancel</button>
+    </section>
+
+    <section id="progress" hidden>
+      <h2 id="progress-title">Installing</h2>
+      <progress id="progress-bar" max="100" value="0"></progress>
+      <p id="progress-text" class="hint">Do not unplug the device.</p>
+    </section>
+
+    <section id="done" class="notice success" hidden>
+      <h2>Update finished</h2>
+      <p>The device will restart with the new firmware. Unplug the cable once XCSoar has started.</p>
+      <button id="again" type="button">Update another device</button>
+    </section>
+
+    <section id="failed" class="notice error" hidden>
+      <h2>Something went wrong</h2>
+      <p id="failed-text"></p>
+      <p>Unplug the device, plug it in again and start over. If the update stopped half way, the device will not
+        start until it has been updated, so try again before you unplug it for good.</p>
+      <button id="retry" type="button">Start over</button>
+    </section>
+
+    <details id="log-section">
+      <summary>Technical log</summary>
+      <button id="copy-log" type="button">Copy all</button>
+      <pre id="log"></pre>
+    </details>
+
+    <footer>
+      <p>Built with <a href="https://github.com/espressif/esptool-js">esptool-js</a>.
+        Firmware source: <a href="https://github.com/clydebarrow/esphome/tree/xcsoar">ESPHome</a> and
+        <a href="https://github.com/clydebarrow/XCSoar/tree/esp32-club-glider">XCSoar</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>
